@@ -1,3 +1,10 @@
 @import "normalize";
-@import "main";
+@import "variables";
+@import "mixins";
+@import "mediaQueries";
+@import "grid";
+@import "base";
+@import "typography";
 @import "header";
+@import "footer";
+@import "hero";

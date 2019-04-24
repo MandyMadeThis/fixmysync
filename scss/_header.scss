@@ -1,0 +1,124 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+}
+
+nav {
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.fixmysynclogo {
+  fill: $black;
+  width: 250px;
+}
+
+.nav-menuIcon {
+  position: relative;
+  float: right;
+  display: none;
+  z-index: 5;
+
+  @include media(palm) {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+
+    &::before,
+    &::after,
+    span::after {
+      content: '';
+      transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.25;
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 3px;
+      background-color: $cream;
+    }
+
+    &::before {
+      top: 0;
+
+      .nav--open & {
+        top: 50%;
+        top: calc(50% - 1.5px);
+        transform: rotate(-135deg);
+        background-color: $cream;
+      }
+    }
+
+    &::after {
+      bottom: 0;
+
+      .nav--open & {
+        bottom: 50%;
+        bottom: calc(50% - 1.5px);
+        transform: rotate(-45deg);
+        background-color: $cream;
+      }
+    }
+
+    span {
+      font-size: 0;
+
+      &::after {
+        top: calc(50% - 1.5px);
+
+        .nav--open & {
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+ul.nav {
+  color: $cream;
+  align-self: flex-end;
+
+  li {
+    display: inline-block;
+    text-align: center;
+    padding-left: 15px;
+
+    &:hover a::after {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+
+  a {
+    color: $cream;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-bottom: 6px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $cream;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+      
+  }
+}
+  

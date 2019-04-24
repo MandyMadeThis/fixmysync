@@ -1,0 +1,25 @@
+body {
+  background-color: $teal;
+  border-left: 20px solid $cream;
+  border-right: 20px solid $cream;
+
+  &::before, &::after {
+    content: "";
+    position: fixed;
+    background-color: $cream;
+    left: 0;
+    right: 0;
+    height: 20px;
+  }
+
+  &::before {top: 0;}
+  &::after {bottom: 0;}
+}
+
+section {
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
