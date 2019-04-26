@@ -2,6 +2,33 @@ body {
   background-color: $teal;
   border-left: 20px solid $cream;
   border-right: 20px solid $cream;
+  scrollbar-base-color: $teal;
+  scrollbar-3dlight-color: $teal;
+  scrollbar-highlight-color: $teal;
+  scrollbar-track-color: $cream;
+  scrollbar-arrow-color: $teal;
+  scrollbar-shadow-color: $teal;
+  scrollbar-dark-shadow-color: $teal;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -moz-appearance: scrollbartrack-vertical;
+    background: $cream;
+    border-radius: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    border-radius: 0px;
+    background: $teal;
+  }
+    
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background: $teal;
+  }
 
   &::before, &::after {
     content: "";
@@ -16,10 +43,27 @@ body {
   &::after {bottom: 0;}
 }
 
+::-moz-selection {
+  background: $teal;
+  color: $cream;
+}
+  
+::selection {
+  background: $teal;
+  color: $cream;
+}
+  
+
 section {
-  height: 100vh;
-  padding: 20px;
+  padding: 20px 10px;
+}
+
+.flex-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+
+  .websites & {
+    flex-direction: column;
+    height: 142vh;
+  }
 }

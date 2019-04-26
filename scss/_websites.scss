@@ -1,0 +1,47 @@
+.website {
+  margin: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: calc(50vh - 35px);
+  width: calc(50% - 10px);
+}
+
+.website--lg {
+  height: calc(100vh - 60px);
+}
+
+.website-wv {
+  background-image: url(../images/websites_wv.jpg);
+  @include media(palm) {
+    background-image: url(../images/websites_wv_sm.jpg);
+  }
+}
+.website-kpmb {
+  background-image: url(../images/websites_kpmb.jpg);
+  @include media(palm) {
+    background-image: url(../images/websites_kpmb_sm.jpg);
+  }
+}
+.website-rbc {
+  background-image: url(../images/websites_rbc.jpg);
+  @include media(palm) {
+    background-image: url(../images/websites_rbc_sm.jpg);
+  }
+}
+.website-bb {
+  background-image: url(../images/websites_bb.jpg);
+  @include media(palm) {
+    background-image: url(../images/websites_bb_sm.jpg);
+  }
+}
+.website-mtn {
+  background-image: url(../images/websites_mtn.jpg);
+  @include media(palm) {
+    background-image: url(../images/websites_mtn_sm.jpg);
+  }
+}
+
+.website-text {
+  display: none;
+}

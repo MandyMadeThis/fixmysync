@@ -4,6 +4,15 @@ header {
   left: 0;
   right: 0;
   padding: 20px;
+
+  a {
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
 }
 
 nav {
@@ -14,9 +23,13 @@ nav {
   align-items: flex-start;
 }
 
-.fixmysynclogo {
+svg.fixmysynclogo {
   fill: $black;
   width: 250px;
+
+  path:not(#f) {
+    display: none;
+  }
 }
 
 .nav-menuIcon {
