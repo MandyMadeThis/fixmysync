@@ -1,8 +1,13 @@
+.websites {
+
+}
+
 .website {
   margin: 5px;
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 0 15%;
   height: calc(50vh - 35px);
   width: calc(50% - 10px);
 }
@@ -40,6 +45,53 @@
   @include media(palm) {
     background-image: url(../images/websites_mtn_sm.jpg);
   }
+}
+
+.website-tag {
+  background-color: rgba($teal-dark, 0.85);
+  position: absolute;
+  padding: 8px;
+  bottom: 20px;
+
+  &:after {
+    content: "";
+    border-bottom: 51px solid rgba($teal-dark, 0.85);
+    border-right: 51px solid transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -51px;
+  }
+}
+
+.website-title,
+.website-subtitle {
+  font-family: $body;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+
+.website-title {font-size: 19px;}
+
+.website-subtitle {
+  font-size: 13px;
+  margin-top: 3px;
+  font-weight: 400;
+}
+
+.website-info {
+  color: $cream;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid $cream;
+  position: absolute;
+  bottom: 6px;
+  right: -23px;
+  z-index: 1;
+  width: 15px;
+  text-align: center;
 }
 
 .website-text {

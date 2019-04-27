@@ -37,6 +37,7 @@ body {
     left: 0;
     right: 0;
     height: 20px;
+    z-index: 999;
   }
 
   &::before {top: 0;}

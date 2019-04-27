@@ -8,4 +8,12 @@
   background-color: $cream;
   margin: 0 auto;
   padding: 3%;
+
+  p:first-of-type::first-letter {
+    font-family: $heading;
+    font-style: italic;
+    font-size: 100px;
+    line-height: 1;
+    margin-right: -20px;
+  }
 }
