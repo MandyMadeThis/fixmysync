@@ -1,10 +1,19 @@
 header {
   position: fixed;
+  border-left: 20px solid $cream;
+  border-right: 20px solid $cream;
+  border-top: 20px solid $cream;
+  transition: $nice-trans;
   top: 0;
   left: 0;
   right: 0;
   padding: 20px;
   z-index: 999;
+
+  &.header--bg {
+    background-color: rgba($black, 0.65);
+    padding: 0 20px;
+  }
 
   a {
     box-shadow: none;
@@ -22,10 +31,18 @@ nav {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
+
+  &.out {
+    pointer-events: none;
+  }
+
+  &.in {
+    pointer-events: auto;
+  }
 }
 
 svg.fixmysynclogo {
-  fill: $black;
+  fill: $cream;
   width: 250px;
 
   path:not(#f) {
@@ -33,13 +50,25 @@ svg.fixmysynclogo {
   }
 }
 
-.nav-menuIcon {
+@include media(nav) {
+  nav,
+  nav ul, 
+  nav li {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.nav-trigger {
+  display: none;
   position: relative;
   float: right;
-  display: none;
   z-index: 5;
 
-  @include media(palm) {
+  @include media(nav) {
     display: inline-block;
     width: 20px;
     height: 15px;
@@ -62,7 +91,7 @@ svg.fixmysynclogo {
     &::before {
       top: 0;
 
-      .nav--open & {
+      .open & {
         top: 50%;
         top: calc(50% - 1.5px);
         transform: rotate(-135deg);
@@ -73,7 +102,7 @@ svg.fixmysynclogo {
     &::after {
       bottom: 0;
 
-      .nav--open & {
+      .open & {
         bottom: 50%;
         bottom: calc(50% - 1.5px);
         transform: rotate(-45deg);
@@ -87,7 +116,7 @@ svg.fixmysynclogo {
       &::after {
         top: calc(50% - 1.5px);
 
-        .nav--open & {
+        .open & {
           visibility: hidden;
           opacity: 0;
         }
@@ -99,11 +128,21 @@ svg.fixmysynclogo {
 ul.nav {
   color: $cream;
   align-self: flex-end;
+  @include media(nav) {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
 
   li {
     display: inline-block;
     text-align: center;
     padding-left: 15px;
+    @include media(nav) {
+      position: relative;
+      height: 20%;
+    }
 
     &:hover a::after {
       visibility: visible;
@@ -135,4 +174,27 @@ ul.nav {
       
   }
 }
+
+@for $i from 1 through 5 {
+  nav.in li:nth-child(#{$i}) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) (0.1s*$i), opacity 0.5s linear 0.1s;
+  }
+}
+
+@for $i from 5 through 1 {
+  nav.out li:nth-child(#{$i}) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) (5-$i), opacity 0.3s linear (0.05s*(5-$i));
+  }
+}
   
+@include media(nav) {
+  nav.out li {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+
+  nav.in li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

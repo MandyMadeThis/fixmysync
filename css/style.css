@@ -339,7 +339,9 @@ body {
   scrollbar-track-color: #F6F2E6;
   scrollbar-arrow-color: #006075;
   scrollbar-shadow-color: #006075;
-  scrollbar-dark-shadow-color: #006075; }
+  scrollbar-dark-shadow-color: #006075;
+  scrollbar-color: #006075;
+  scrollbar-width: 12px; }
   body::-webkit-scrollbar {
     width: 12px; }
   body::-webkit-scrollbar-track {
@@ -387,7 +389,7 @@ section {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: 142vh; }
+    height: 146vh; }
 
 body {
   font-family: "Karla", sans-serif;
@@ -462,11 +464,20 @@ ol {
 
 header {
   position: fixed;
+  border-left: 20px solid #F6F2E6;
+  border-right: 20px solid #F6F2E6;
+  border-top: 20px solid #F6F2E6;
+  -webkit-transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  -o-transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
   top: 0;
   left: 0;
   right: 0;
   padding: 20px;
   z-index: 999; }
+  header.header--bg {
+    background-color: rgba(26, 26, 26, 0.65);
+    padding: 0 20px; }
   header a {
     -webkit-box-shadow: none;
             box-shadow: none; }
@@ -486,20 +497,34 @@ nav {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start; }
+  nav.out {
+    pointer-events: none; }
+  nav.in {
+    pointer-events: auto; }
 
 svg.fixmysynclogo {
-  fill: #1A1A1A;
+  fill: #F6F2E6;
   width: 250px; }
   svg.fixmysynclogo path:not(#f) {
     display: none; }
 
-.nav-menuIcon {
+@media (max-width: 950px) {
+  nav,
+  nav ul,
+  nav li {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer; } }
+
+.nav-trigger {
+  display: none;
   position: relative;
   float: right;
-  display: none;
   z-index: 5; }
-  @media (max-width: 600px) {
-    .nav-menuIcon {
+  @media (max-width: 950px) {
+    .nav-trigger {
       display: inline-block;
       width: 20px;
       height: 15px;
@@ -509,8 +534,8 @@ svg.fixmysynclogo {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none; }
-      .nav-menuIcon::before, .nav-menuIcon::after,
-      .nav-menuIcon span::after {
+      .nav-trigger::before, .nav-trigger::after,
+      .nav-trigger span::after {
         content: '';
         -webkit-transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.25;
         -o-transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.25;
@@ -520,29 +545,29 @@ svg.fixmysynclogo {
         width: 20px;
         height: 3px;
         background-color: #F6F2E6; }
-      .nav-menuIcon::before {
+      .nav-trigger::before {
         top: 0; }
-        .nav--open .nav-menuIcon::before {
+        .open .nav-trigger::before {
           top: 50%;
           top: calc(50% - 1.5px);
           -webkit-transform: rotate(-135deg);
               -ms-transform: rotate(-135deg);
                   transform: rotate(-135deg);
           background-color: #F6F2E6; }
-      .nav-menuIcon::after {
+      .nav-trigger::after {
         bottom: 0; }
-        .nav--open .nav-menuIcon::after {
+        .open .nav-trigger::after {
           bottom: 50%;
           bottom: calc(50% - 1.5px);
           -webkit-transform: rotate(-45deg);
               -ms-transform: rotate(-45deg);
                   transform: rotate(-45deg);
           background-color: #F6F2E6; }
-      .nav-menuIcon span {
+      .nav-trigger span {
         font-size: 0; }
-        .nav-menuIcon span::after {
+        .nav-trigger span::after {
           top: calc(50% - 1.5px); }
-          .nav--open .nav-menuIcon span::after {
+          .open .nav-trigger span::after {
             visibility: hidden;
             opacity: 0; } }
 
@@ -550,10 +575,19 @@ ul.nav {
   color: #F6F2E6;
   -ms-flex-item-align: end;
       align-self: flex-end; }
+  @media (max-width: 950px) {
+    ul.nav {
+      height: 100%;
+      width: 100%;
+      position: absolute; } }
   ul.nav li {
     display: inline-block;
     text-align: center;
     padding-left: 15px; }
+    @media (max-width: 950px) {
+      ul.nav li {
+        position: relative;
+        height: 20%; } }
     ul.nav li:hover a::after {
       visibility: visible;
       -webkit-transform: scaleX(1);
@@ -582,6 +616,88 @@ ul.nav {
       -webkit-transition: all 0.3s ease-in-out 0s;
       -o-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s; }
+
+nav.in li:nth-child(1) {
+  -webkit-transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s;
+  transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s;
+  -o-transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s; }
+
+nav.in li:nth-child(2) {
+  -webkit-transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+  transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+  -o-transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s; }
+
+nav.in li:nth-child(3) {
+  -webkit-transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+  transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+  -o-transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s; }
+
+nav.in li:nth-child(4) {
+  -webkit-transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  -o-transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s; }
+
+nav.in li:nth-child(5) {
+  -webkit-transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  -o-transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.1s;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s; }
+
+nav.out li:nth-child(5) {
+  -webkit-transition: opacity 0.3s linear 0s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0;
+  transition: opacity 0.3s linear 0s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0;
+  -o-transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0, opacity 0.3s linear 0s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0, opacity 0.3s linear 0s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0, opacity 0.3s linear 0s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0; }
+
+nav.out li:nth-child(4) {
+  -webkit-transition: opacity 0.3s linear 0.05s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1;
+  transition: opacity 0.3s linear 0.05s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1;
+  -o-transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1, opacity 0.3s linear 0.05s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1, opacity 0.3s linear 0.05s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1, opacity 0.3s linear 0.05s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1; }
+
+nav.out li:nth-child(3) {
+  -webkit-transition: opacity 0.3s linear 0.1s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2;
+  transition: opacity 0.3s linear 0.1s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2;
+  -o-transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2, opacity 0.3s linear 0.1s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2, opacity 0.3s linear 0.1s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2, opacity 0.3s linear 0.1s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 2; }
+
+nav.out li:nth-child(2) {
+  -webkit-transition: opacity 0.3s linear 0.15s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3;
+  transition: opacity 0.3s linear 0.15s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3;
+  -o-transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3, opacity 0.3s linear 0.15s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3, opacity 0.3s linear 0.15s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3, opacity 0.3s linear 0.15s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 3; }
+
+nav.out li:nth-child(1) {
+  -webkit-transition: opacity 0.3s linear 0.2s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4;
+  transition: opacity 0.3s linear 0.2s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4;
+  -o-transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4, opacity 0.3s linear 0.2s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4, opacity 0.3s linear 0.2s;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4, opacity 0.3s linear 0.2s, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 4; }
+
+@media (max-width: 950px) {
+  nav.out li {
+    -webkit-transform: translateY(300%);
+        -ms-transform: translateY(300%);
+            transform: translateY(300%);
+    opacity: 0; }
+  nav.in li {
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
 
 .footer-iconList {
   margin: 35px 0 0;
@@ -740,13 +856,13 @@ ul.nav {
     margin-right: -20px; }
 
 .website {
-  margin: 5px;
+  margin: 10px;
   position: relative;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: 0 15%;
-  height: calc(50vh - 35px);
-  width: calc(50% - 10px); }
+  height: calc(50vh - 39px);
+  width: calc(50% - 20px); }
 
 .website--lg {
   height: calc(100vh - 60px); }
@@ -798,11 +914,11 @@ ul.nav {
 .website-title,
 .website-subtitle {
   font-family: "Karla", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .02em; }
+  text-transform: uppercase; }
 
 .website-title {
-  font-size: 19px; }
+  font-size: 19px;
+  letter-spacing: .05em; }
 
 .website-subtitle {
   font-size: 13px;

@@ -9,6 +9,8 @@ body {
   scrollbar-arrow-color: $teal;
   scrollbar-shadow-color: $teal;
   scrollbar-dark-shadow-color: $teal;
+  scrollbar-color: $teal;
+  scrollbar-width: 12px;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -65,6 +67,6 @@ section {
 
   .websites & {
     flex-direction: column;
-    height: 142vh;
+    height: 146vh;
   }
 }

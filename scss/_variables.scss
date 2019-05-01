@@ -10,13 +10,11 @@ $container-width: 1100px;
 /////////////////////
 $breakpoints: (
   palm: '(max-width: 600px)',
+  nav: '(max-width: 950px)',
   portable: '(max-width: 1023px)',
   lap: '(min-width: 601px) and (max-width: 1366px)',
   desk: '(min-width: 1024px)'
 );
-
-$mobile-nav-breakpoint: 1330px;
-
 
 //////////////////
 //// COLOURS ////
